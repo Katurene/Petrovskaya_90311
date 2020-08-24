@@ -6,10 +6,14 @@
 <main class="container">
     <h1>Лабораторная работа 1</h1><br />
     <h3>Список</h3>
+
     <ol type="A">
-        <li>Элемент 1 списка</li>
-        <li>Элемент 2 списка</li>
+        @for (int i = 1; i < 5; i++)
+        {
+            <li>элемент @i списка</li>
+        }
     </ol>
+
     <hr />
 
     <form method="get">
