@@ -10,6 +10,7 @@ namespace Petrovskaya_90311.Controllers
     {
         public IActionResult Index()
         {
+            ViewData["Text"] = "Лабораторная работа 2";
             return View();
         }
     }
