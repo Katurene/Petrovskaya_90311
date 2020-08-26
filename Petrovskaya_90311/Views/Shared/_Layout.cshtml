@@ -14,16 +14,22 @@
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-dark bg-dark">
 
-                <a class="navbar-brand" href="#">WebLabsV06</a>
+                @*<a class="navbar-brand" href="#">WebLabsV06</a>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" asp-controller="Home" asp-
+               action="Index">Lab 2</a>
+            <a class="nav-item nav-link" asp-controller="Product" asp-
+               action="Index">Каталог</a>
+            <a class="nav-item nav-link" asp-area="Admin" asp-
+               page="/Index">Администрирование</a>
+        </div>*@
 
+                <!-- меню сайта -->
+                <a class="navbar-brand" asp-action="Index" asp-controller="Home">WebLabsV06</a>
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link active" asp-controller="Home" asp-
-                       action="Index">Lab 2</a>
-                    <a class="nav-item nav-link" asp-controller="Product" asp-
-                       action="Index">Каталог</a>
-                    <a class="nav-item nav-link" asp-area="Admin" asp-
-                       page="/Index">Администрирование</a>
+                    @await Component.InvokeAsync("Menu")
                 </div>
+                <!-- меню сайта - конец -->
 
                 <!-- Информация пользователя -->
                 <a asp-controller="Cart" asp-action="Index" class="navbar-text ml-auto">
