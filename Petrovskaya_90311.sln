@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Petrovskaya_90311", "Petrovskaya_90311\Petrovskaya_90311.csproj", "{21D26A09-4E1A-421B-90DF-2D063FAB0258}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Petrovskaya_90311", "Petrovskaya_90311\Petrovskaya_90311.csproj", "{21D26A09-4E1A-421B-90DF-2D063FAB0258}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Petrovskaya_90311.DAL", "Petrovskaya_90311.DAL\Petrovskaya_90311.DAL.csproj", "{437CD105-3E8D-40D3-A072-5A0D95D737B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{21D26A09-4E1A-421B-90DF-2D063FAB0258}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21D26A09-4E1A-421B-90DF-2D063FAB0258}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21D26A09-4E1A-421B-90DF-2D063FAB0258}.Release|Any CPU.Build.0 = Release|Any CPU
+		{437CD105-3E8D-40D3-A072-5A0D95D737B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{437CD105-3E8D-40D3-A072-5A0D95D737B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{437CD105-3E8D-40D3-A072-5A0D95D737B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{437CD105-3E8D-40D3-A072-5A0D95D737B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
