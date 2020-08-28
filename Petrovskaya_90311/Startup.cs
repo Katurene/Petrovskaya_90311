@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Petrovskaya_90311.DAL.Data;
 using Petrovskaya_90311.DAL.Entities;
+using Petrovskaya_90311.Services;
 
 namespace Petrovskaya_90311
 {
@@ -44,7 +45,9 @@ namespace Petrovskaya_90311
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, 
+            ApplicationDbContext context, UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
@@ -64,6 +67,8 @@ namespace Petrovskaya_90311
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            DbInitializer.Seed(context, userManager, roleManager).GetAwaiter().GetResult();
 
             app.UseEndpoints(endpoints =>
             {
