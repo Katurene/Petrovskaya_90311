@@ -80,6 +80,19 @@ namespace Petrovskaya_90311.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+
+                //Изменение метода OnPostAsync для сохранения изображения в базе данных
+                if (Input.Avatar != null)
+                {
+                    user.AvatarImage = new byte[(int)Input.Avatar.Length];
+                    await Input.Avatar
+                    .OpenReadStream()
+                    .ReadAsync(
+                    user.AvatarImage,
+                    0,
+                    (int)Input.Avatar.Length);
+                }
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
