@@ -7,5 +7,6 @@ namespace Petrovskaya_90311.DAL.Entities
 {
     public class ApplicationUser : IdentityUser
     {
+        public byte[] AvatarImage { get; set; }
     }
 }
