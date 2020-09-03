@@ -7,15 +7,27 @@ namespace Petrovskaya_90311.Tests
 {
     public class TestData
     {
+        //public static List<Animal> GetDishesList()
+        //{
+        //    return new List<Animal>
+        //    {
+        //        new Animal{ AnimalId=1},
+        //        new Animal{ AnimalId=2},
+        //        new Animal{ AnimalId=3},
+        //        new Animal{ AnimalId=4},
+        //        new Animal{ AnimalId=5}
+        //    };
+        //}
+
         public static List<Animal> GetDishesList()
         {
             return new List<Animal>
             {
-                new Animal{ AnimalId=1},
-                new Animal{ AnimalId=2},
-                new Animal{ AnimalId=3},
-                new Animal{ AnimalId=4},
-                new Animal{ AnimalId=5}
+                new Animal{ AnimalId=1, AnimalGroupId=1},
+                new Animal{ AnimalId=2, AnimalGroupId=1},
+                new Animal{ AnimalId=3, AnimalGroupId=2},
+                new Animal{ AnimalId=4, AnimalGroupId=2},
+                new Animal{ AnimalId=5, AnimalGroupId=3}
             };
         }
 
