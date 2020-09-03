@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Petrovskaya_90311.DAL.Entities;
+using Petrovskaya_90311.Models;
 
 namespace Petrovskaya_90311.Controllers
 {
@@ -18,15 +19,20 @@ namespace Petrovskaya_90311.Controllers
         {
             _pageSize = 3;
             SetupData();
-        }      
+        }
+
+        //public IActionResult Index(int pageNo = 1)
+        //{
+        //    var items = _animals
+        //    .Skip((pageNo - 1) * _pageSize)
+        //    .Take(_pageSize)
+        //    .ToList();
+        //    return View(items);
+        //}
 
         public IActionResult Index(int pageNo = 1)
         {
-            var items = _animals
-            .Skip((pageNo - 1) * _pageSize)
-            .Take(_pageSize)
-            .ToList();
-            return View(items);
+            return View(ListViewModel<Animal>.GetModel(_animals, pageNo, _pageSize));
         }
 
         /// <summary>

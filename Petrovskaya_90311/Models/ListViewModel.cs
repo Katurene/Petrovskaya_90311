@@ -30,8 +30,7 @@ namespace Petrovskaya_90311.Models
             .Skip((current - 1) * itemsPerPage)
             .Take(itemsPerPage)
             .ToList();
-            var total = (int)Math.Ceiling((double)list.Count() /
-            itemsPerPage);
+            var total = (int)Math.Ceiling((double)list.Count() / itemsPerPage);
             return new ListViewModel<T>(items, total, current);
         }
     }
