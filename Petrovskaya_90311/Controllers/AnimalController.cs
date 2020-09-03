@@ -9,7 +9,7 @@ namespace Petrovskaya_90311.Controllers
 {
     public class AnimalController : Controller
     {
-        List<Animal> _animals;
+        public List<Animal> _animals;  //паблик для теста
         List<AnimalGroup> _animalGroups;
 
         int _pageSize;
