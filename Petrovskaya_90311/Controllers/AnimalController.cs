@@ -19,20 +19,19 @@ namespace Petrovskaya_90311.Controllers
         {
             _pageSize = 3;
             SetupData();
-        }
+        }      
 
-        //public IActionResult Index(int pageNo = 1)
-        //{
-        //    var items = _animals
-        //    .Skip((pageNo - 1) * _pageSize)
-        //    .Take(_pageSize)
-        //    .ToList();
-        //    return View(items);
-        //}
-
-        public IActionResult Index(int pageNo = 1)
+        public IActionResult Index(int? group, int pageNo = 1)
         {
-            return View(ListViewModel<Animal>.GetModel(_animals, pageNo, _pageSize));
+            var animalsFiltered = _animals.Where(d => !group.HasValue || d.AnimalGroupId == group.Value);
+            // Поместить список групп во ViewData
+            ViewData["Groups"] = _animalGroups;
+            // Получить id текущей группы и поместить в TempData
+            ViewData["CurrentGroup"] = group ?? 0;
+
+            return View(ListViewModel<Animal>.GetModel(animalsFiltered, pageNo, _pageSize));
+
+            //return View(ListViewModel<Animal>.GetModel(_animals, pageNo, _pageSize));
         }
 
         /// <summary>
