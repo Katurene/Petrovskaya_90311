@@ -6,101 +6,11 @@
     ViewData["Title"] = "Меню";
 }
 
-
 <div class="row">
     <div class="card-deck">
         @foreach (var item in Model)
-        {
-        <div class='card m-2 p-1 text-center col-4'>
-            <img src="~/Images/@item.Image"
-                 alt='NoImage'
-                 class="card-img-top" />
-            <div class="card-body">
-                <h5 class="card-title">
-                    @item.AnimalName
-                </h5>
-                <p class="card-text">
-                    @item.Description
-                </p>
-                <div class="card-text badge badge-secondary">
-                    <h6>Возраст @item.Age лет</h6>
-                </div>
-                @{ // Получение текущего адреса
-                        var request = ViewContext.HttpContext.Request;
-                        var returnUrl = request.Path +
-                        request.QueryString.ToUriComponent();
-                }
-                <!--Разметка кнопки добавления в корзину-->
-                <p class="mt-2">
-                    <a asp-action="Add"
-                       asp-controller="Cart"
-                       asp-route-id="@item.AnimalId"
-                       asp-route-returnUrl="@returnUrl"
-                       class="btn btn-primary">
-                        <i class="fa fa-shopping-cart"></i> В корзину
-                    </a>
-                </p>
-            </div>
-        </div>
+        {        
+        <partial name="_ListItemPartial" model="@item" />
         }
     </div>
 </div>
-
-@*<p>
-        <a asp-action="Create">Create New</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.AnimalId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AnimalName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Age)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Image)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.AnimalGroupId)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AnimalId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AnimalName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Age)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Image)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.AnimalGroupId)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>*@
