@@ -12,14 +12,21 @@ namespace Petrovskaya_90311.Controllers
         List<Animal> _animals;
         List<AnimalGroup> _animalGroups;
 
+        int _pageSize;
+
         public AnimalController()
         {
+            _pageSize = 3;
             SetupData();
-        }
+        }      
 
-        public IActionResult Index()
+        public IActionResult Index(int pageNo = 1)
         {
-            return View(_animals);
+            var items = _animals
+            .Skip((pageNo - 1) * _pageSize)
+            .Take(_pageSize)
+            .ToList();
+            return View(items);
         }
 
         /// <summary>
