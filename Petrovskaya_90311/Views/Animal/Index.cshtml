@@ -44,8 +44,13 @@ var text = currentGroup !=0
     <div class="col-10">
         <div class="card-deck">
             @foreach (var item in Model)
-        {
-            <partial name="_ListItemPartial" model="@item" />
-        }
+            {
+                <partial name="_ListItemPartial" model="@item" />
+            }
         </div>
+        <pager page-current="@Model.CurrentPage"
+               page-total="@Model.TotalPages"
+               action="Index"
+               controller="Animal"
+               group-id="@currentGroup"></pager>
     </div>
