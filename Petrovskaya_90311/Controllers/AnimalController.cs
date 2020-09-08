@@ -29,9 +29,14 @@ namespace Petrovskaya_90311.Controllers
             // Получить id текущей группы и поместить в TempData
             ViewData["CurrentGroup"] = group ?? 0;
 
-            return View(ListViewModel<Animal>.GetModel(animalsFiltered, pageNo, _pageSize));
+            //return View(ListViewModel<Animal>.GetModel(animalsFiltered, pageNo, _pageSize));
 
-            //return View(ListViewModel<Animal>.GetModel(_animals, pageNo, _pageSize));
+            var model = ListViewModel<Animal>.GetModel(animalsFiltered, pageNo, _pageSize);
+            if (Request.Headers["x-requested-with"]
+            .ToString().ToLower().Equals("xmlhttprequest"))
+                return PartialView("_listpartial", model);
+            else
+                return View(model);
         }
 
         /// <summary>
