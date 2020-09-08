@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Petrovskaya_90311.DAL.Entities;
+using Petrovskaya_90311.Extensions;
 using Petrovskaya_90311.Models;
 
 namespace Petrovskaya_90311.Controllers
@@ -19,8 +20,10 @@ namespace Petrovskaya_90311.Controllers
         {
             _pageSize = 3;
             SetupData();
-        }      
+        }
 
+        [Route("Catalog")]
+        [Route("Catalog/Page_{pageNo}")]       
         public IActionResult Index(int? group, int pageNo = 1)
         {
             var animalsFiltered = _animals.Where(d => !group.HasValue || d.AnimalGroupId == group.Value);
@@ -32,9 +35,13 @@ namespace Petrovskaya_90311.Controllers
             //return View(ListViewModel<Animal>.GetModel(animalsFiltered, pageNo, _pageSize));
 
             var model = ListViewModel<Animal>.GetModel(animalsFiltered, pageNo, _pageSize);
-            if (Request.Headers["x-requested-with"]
-            .ToString().ToLower().Equals("xmlhttprequest"))
+            //if (Request.Headers["x-requested-with"]
+            //.ToString().ToLower().Equals("xmlhttprequest"))
+            //    return PartialView("_listpartial", model);
+
+            if (Request.IsAjaxRequest())
                 return PartialView("_listpartial", model);
+
             else
                 return View(model);
         }
