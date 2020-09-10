@@ -76,7 +76,7 @@ namespace Petrovskaya_90311.Services
                     " а вес — от 45 до 700 граммов.",
                     Age =1, AnimalGroupId=4, Image="Homyak.jpg" },
 
-                new Animal { AnimalId = 11, AnimalName="Бенгальская кошка",
+                new Animal { AnimalName="Бенгальская кошка",
                     Description="Межродовой гибрид домашней кошки и бенгальской кошки ",
                     Age =7, AnimalGroupId=5, Image="Koshka.jpg" }
                 });
