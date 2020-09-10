@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Petrovskaya_90311.DAL.Data;
 using Petrovskaya_90311.DAL.Entities;
 
 namespace Petrovskaya_90311.Tests
@@ -19,16 +20,30 @@ namespace Petrovskaya_90311.Tests
         //    };
         //}
 
-        public static List<Animal> GetDishesList()
+        //public static List<Animal> GetDishesList()
+        //{
+        //    return new List<Animal>
+        //    {
+        //        new Animal{ AnimalId=1, AnimalGroupId=1},
+        //        new Animal{ AnimalId=2, AnimalGroupId=1},
+        //        new Animal{ AnimalId=3, AnimalGroupId=2},
+        //        new Animal{ AnimalId=4, AnimalGroupId=2},
+        //        new Animal{ AnimalId=5, AnimalGroupId=3}
+        //    };
+        //}
+
+        public static void FillContext(ApplicationDbContext context)
         {
-            return new List<Animal>
+            context.AnimalGroups.Add(new AnimalGroup{ GroupName = "fake group" });
+            context.AddRange(new List<Animal>
             {
                 new Animal{ AnimalId=1, AnimalGroupId=1},
                 new Animal{ AnimalId=2, AnimalGroupId=1},
                 new Animal{ AnimalId=3, AnimalGroupId=2},
                 new Animal{ AnimalId=4, AnimalGroupId=2},
                 new Animal{ AnimalId=5, AnimalGroupId=3}
-            };
+            });
+            context.SaveChanges();
         }
 
         public static IEnumerable<object[]> Params()
