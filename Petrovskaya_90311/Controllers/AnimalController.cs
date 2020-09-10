@@ -21,6 +21,7 @@ namespace Petrovskaya_90311.Controllers
         {
             _pageSize = 3;
             //SetupData();
+            _context = context;
         }
 
         [Route("Catalog")]
