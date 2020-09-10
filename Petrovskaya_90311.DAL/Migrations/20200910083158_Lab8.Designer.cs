@@ -10,8 +10,8 @@ using Petrovskaya_90311.DAL.Data;
 namespace Petrovskaya_90311.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200910064727_EntitiesAdded")]
-    partial class EntitiesAdded
+    [Migration("20200910083158_Lab8")]
+    partial class Lab8
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
