@@ -4,11 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Petrovskaya_90311.DAL.Entities;
 
-namespace Petrovskaya_90311.Models.Cart
+namespace Petrovskaya_90311.Models
 {
     public class Cart
     {
         public Dictionary<int, CartItem> Items { get; set; }
+
         public Cart()
         {
             Items = new Dictionary<int, CartItem>();
@@ -67,5 +68,14 @@ namespace Petrovskaya_90311.Models.Cart
         {
             Items.Clear();
         }
+
+        /// <summary>
+        /// Клас описывает одну позицию в корзине
+        /// </summary>        
+    }
+    public class CartItem
+    {
+        public Animal Animal { get; set; }
+        public int Quantity { get; set; }
     }
 }
