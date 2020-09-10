@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Petrovskaya_90311.DAL.Data;
 using Petrovskaya_90311.DAL.Entities;
 using Petrovskaya_90311.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Petrovskaya_90311
 {
@@ -43,7 +44,14 @@ namespace Petrovskaya_90311
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
-            
+
+            services.AddDistributedMemoryCache();
+            services.AddSession(opt =>
+            {
+                opt.Cookie.HttpOnly = true;
+                opt.Cookie.IsEssential = true;
+            });
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,8 +59,6 @@ namespace Petrovskaya_90311
             ApplicationDbContext context, UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager)
         {
-            
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -70,6 +76,9 @@ namespace Petrovskaya_90311
             app.UseRouting();
 
             app.UseAuthentication();
+
+            app.UseSession();
+
             app.UseAuthorization();
 
             DbInitializer.Seed(context, userManager, roleManager).GetAwaiter().GetResult();
