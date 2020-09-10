@@ -37,7 +37,7 @@ namespace Petrovskaya_90311.Areas.Admin.Pages
             {
                 return NotFound();
             }
-           ViewData["AnimalGroupId"] = new SelectList(_context.AnimalGroups, "AnimalGroupId", "AnimalGroupId");
+           ViewData["AnimalGroupId"] = new SelectList(_context.AnimalGroups, "AnimalGroupId", "GroupName");
             return Page();
         }
 
