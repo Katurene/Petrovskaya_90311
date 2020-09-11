@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Petrovskaya_90311.Models;
 using Microsoft.Extensions.Logging;
+using Petrovskaya_90311.Extensions;
 
 namespace Petrovskaya_90311
 {
@@ -87,6 +88,8 @@ namespace Petrovskaya_90311
             app.UseSession();
 
             app.UseAuthorization();
+
+            app.UseFileLogging();
 
             DbInitializer.Seed(context, userManager, roleManager).GetAwaiter().GetResult();
 

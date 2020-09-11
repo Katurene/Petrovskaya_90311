@@ -24,8 +24,8 @@ namespace Petrovskaya_90311.Middleware
             if (context.Response.StatusCode != StatusCodes.Status200OK)
             {
                 var path = context.Request.Path +
-                context.Request.QueryString;
-                _logger.LogInformation($"Request {path} returns status code { context.Response.StatusCode.ToString()}");
+            context.Request.QueryString;
+            _logger.LogInformation($"Request {path} returns status code { context.Response.StatusCode.ToString()}");
             }
         }
     }
