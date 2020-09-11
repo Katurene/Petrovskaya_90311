@@ -23,9 +23,13 @@ namespace Petrovskaya_90311.Controllers
 
         // GET: api/NewApi
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Animal>>> GetAnimals()
+        public async Task<ActionResult<IEnumerable<Animal>>> GetAnimals(int? group)
         {
-            return await _context.Animals.ToListAsync();
+            return await _context
+            .Animals
+            .Where(d => !group.HasValue
+            || d.AnimalGroupId.Equals(group.Value))
+            ?.ToListAsync();
         }
 
         // GET: api/NewApi/5

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Petrovskaya_90311", "Petrov
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Petrovskaya_90311.DAL", "Petrovskaya_90311.DAL\Petrovskaya_90311.DAL.csproj", "{437CD105-3E8D-40D3-A072-5A0D95D737B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Petrovskaya_90311.Tests", "Petrovskaya_90311.Tests\Petrovskaya_90311.Tests.csproj", "{15FEF8E6-075A-41DC-8911-207229650AD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Petrovskaya_90311.Tests", "Petrovskaya_90311.Tests\Petrovskaya_90311.Tests.csproj", "{15FEF8E6-075A-41DC-8911-207229650AD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

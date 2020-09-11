@@ -17,25 +17,25 @@ namespace Petrovskaya_90311.Controllers
         //List<AnimalGroup> _animalGroups;
         ApplicationDbContext _context;
         int _pageSize;
-       // private ILogger _logger;
+        private ILogger _logger;
 
-        public AnimalController(ApplicationDbContext context)//,ILogger<AnimalController> logger)
+        public AnimalController(ApplicationDbContext context, ILogger<AnimalController> logger)
         {
             _pageSize = 3;
             //SetupData();
             _context = context;
-            //_logger = logger;
+            _logger = logger;
         }
 
         [Route("Catalog")]
         [Route("Catalog/Page_{pageNo}")]       
         public IActionResult Index(int? group, int pageNo=1)
         {
-            //var groupName = group.HasValue
-            //    ? _context.AnimalGroups.Find(group.Value)?.GroupName
-            //    : "all groups";
+            var groupName = group.HasValue
+                ? _context.AnimalGroups.Find(group.Value)?.GroupName
+                : "all groups";
 
-            //_logger.LogInformation($"info: group={group}, page={pageNo}");
+            _logger.LogInformation($"info: group={group}, page={pageNo}");
 
             var animalsFiltered = _context.Animals.Where(d => !group.HasValue || d.AnimalGroupId == group.Value);
             // Поместить список групп во ViewData
