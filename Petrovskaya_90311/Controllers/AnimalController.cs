@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Petrovskaya_90311.DAL.Data;
 using Petrovskaya_90311.DAL.Entities;
 using Petrovskaya_90311.Extensions;
@@ -16,18 +17,26 @@ namespace Petrovskaya_90311.Controllers
         //List<AnimalGroup> _animalGroups;
         ApplicationDbContext _context;
         int _pageSize;
+       // private ILogger _logger;
 
-        public AnimalController(ApplicationDbContext context)
+        public AnimalController(ApplicationDbContext context)//,ILogger<AnimalController> logger)
         {
             _pageSize = 3;
             //SetupData();
             _context = context;
+            //_logger = logger;
         }
 
         [Route("Catalog")]
         [Route("Catalog/Page_{pageNo}")]       
-        public IActionResult Index(int? group, int pageNo = 1)
+        public IActionResult Index(int? group, int pageNo=1)
         {
+            //var groupName = group.HasValue
+            //    ? _context.AnimalGroups.Find(group.Value)?.GroupName
+            //    : "all groups";
+
+            //_logger.LogInformation($"info: group={group}, page={pageNo}");
+
             var animalsFiltered = _context.Animals.Where(d => !group.HasValue || d.AnimalGroupId == group.Value);
             // Поместить список групп во ViewData
             ViewData["Groups"] = _context.AnimalGroups;
