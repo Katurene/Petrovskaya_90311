@@ -15,6 +15,8 @@ using Petrovskaya_90311.DAL.Data;
 using Petrovskaya_90311.DAL.Entities;
 using Petrovskaya_90311.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Petrovskaya_90311.Models;
 
 namespace Petrovskaya_90311
 {
@@ -52,6 +54,9 @@ namespace Petrovskaya_90311
                 opt.Cookie.IsEssential = true;
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<Cart>(sp => CartService.GetCart(sp));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
