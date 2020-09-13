@@ -1,9 +1,30 @@
 ﻿@page "/apidemo"
 @inject IHttpClientFactory clientFactory
-@using System.Text.Json
 @using Petrovskaya_90311.Blazor.Data
+@using Petrovskaya_90311.Blazor.Components
+@using System.Text.Json
 
+<h3>Список объектов</h3>
 <div class="container">
-    <h3>Страница ApiDemo</h3>
+    <AnimalsList @bind-Animals="animals"></AnimalsList>
 </div>
-@code { }
+
+@code {
+    [Parameter]
+    public IEnumerable<AnimalListViewModel> animals { get; set; }
+    string apiBaseAddress = "https://localhost:44383/Api/NewApi";
+
+    protected override async Task OnInitializedAsync()
+    {
+        var request = new HttpRequestMessage(HttpMethod.Get, apiBaseAddress);
+        var client = clientFactory.CreateClient();
+        var response = await client.SendAsync(request);//client.GetAsync(apiBaseAddress);
+        if (response.IsSuccessStatusCode)
+        {
+            using var responseStream = await response.Content.ReadAsStreamAsync();
+            animals = await JsonSerializer.DeserializeAsync<IEnumerable<AnimalListViewModel>>
+            (responseStream,
+            new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        }
+    }
+}

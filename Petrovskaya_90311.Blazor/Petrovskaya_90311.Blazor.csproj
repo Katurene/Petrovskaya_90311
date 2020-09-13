@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Petrovskaya_90311.DAL\Petrovskaya_90311.DAL.csproj" />
+  </ItemGroup>
+
 </Project>

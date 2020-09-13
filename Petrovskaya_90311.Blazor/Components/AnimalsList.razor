@@ -1,0 +1,27 @@
+﻿@using Petrovskaya_90311.Blazor.Data
+
+@if (Animals == null)
+{
+    <p>Загрузка ...</p>
+}
+else
+{
+    <div class="list-group">
+        @{
+            var i = 1;
+            foreach (var animal in Animals)
+            {
+                <button type="button" class="list-group-item list-group-item-action">
+                    @(i++) - @animal.AnimalName
+                </button>
+            }
+        }
+    </div>
+}
+
+@code {
+    [Parameter]
+    public IEnumerable<AnimalListViewModel> Animals { get; set; }
+    [Parameter]
+    public EventCallback<IEnumerable<AnimalListViewModel>> AnimalsChanged { get; set; }
+}
