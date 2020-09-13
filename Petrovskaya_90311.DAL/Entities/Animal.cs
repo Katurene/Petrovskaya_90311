@@ -14,8 +14,7 @@ namespace Petrovskaya_90311.DAL.Entities
 
         // Навигационные свойства
         /// <summary>
-        /// группа блюд (например, супы, напитки и т.д.)
-        /// </summary>
+       
         public int AnimalGroupId { get; set; }
         public AnimalGroup Group { get; set; }
     }
