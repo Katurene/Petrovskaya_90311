@@ -11,7 +11,7 @@ namespace Petrovskaya_90311.Controllers
     {
         public IActionResult Index()
         {
-            ViewData["Text"] = "Лабораторная работа 2";
+            ViewData["Text"] = "Лабораторная работа";
             ViewData["Lst"] = new SelectList(_listDemo, "ListItemValue", "ListItemText");
             return View();
             

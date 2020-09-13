@@ -1,0 +1,24 @@
+﻿@using Petrovskaya_90311.Blazor.Data
+
+@if (Animal != null)
+{
+    <img src="@imageSrc" class="img-thumbnail" width="150" />
+    <div>
+        <p>@Animal.AnimalName - @Animal.Description</p>
+        <div class="badge badge-info ">Возраст: @Animal.Age лет</div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public AnimalDetailsViewModel Animal { get; set; }
+    [Parameter]
+    public EventCallback<AnimalDetailsViewModel> AnimalChanged { get; set; }
+    string imageSrc
+    {
+        get
+        {
+            return $"https://localhost:44310/images/{Animal.Image}";
+        }
+    }
+}
